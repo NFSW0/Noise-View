@@ -36,6 +36,7 @@ func save_image():
 	var save_dialog = FileDialog.new()
 	save_dialog.access = 2
 	save_dialog.use_native_dialog = true
+	save_dialog.set_filters(PackedStringArray(["*.png ; PNG Images"]))
 	save_dialog.connect("file_selected",func(path):
 		noise_image.save_png(path)
 		)
@@ -46,6 +47,7 @@ func save_noise():
 	var save_dialog = FileDialog.new()
 	save_dialog.access = 2
 	save_dialog.use_native_dialog = true
+	save_dialog.set_filters(PackedStringArray(["*.tres ; Resource Files"]))
 	save_dialog.connect("file_selected",func(path):
 		ResourceSaver.save(noise, path)
 		)
