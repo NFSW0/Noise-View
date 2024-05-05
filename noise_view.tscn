@@ -1,0 +1,520 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7qmds355vtug"]
+
+[ext_resource type="Script" path="res://noise_view.gd" id="1_rho6a"]
+
+[node name="NoiseView" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rho6a")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+split_offset = 666
+
+[node name="FlowContainer" type="FlowContainer" parent="HSplitContainer"]
+layout_mode = 2
+alignment = 2
+vertical = true
+
+[node name="SaveImage" type="Button" parent="HSplitContainer/FlowContainer"]
+layout_mode = 2
+text = "保存图像"
+
+[node name="SaveNoise" type="Button" parent="HSplitContainer/FlowContainer"]
+layout_mode = 2
+text = "保存噪声"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Main" type="HSeparator" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "全局参数"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer18" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer18"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "噪声类型"
+vertical_alignment = 1
+
+[node name="NoiseType" type="OptionButton" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer18"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "所使用的噪声算法。"
+item_count = 6
+selected = 1
+popup/item_0/text = "避免定向伪影的柏林噪声"
+popup/item_0/id = 0
+popup/item_1/text = "更高质量的无定向伪影柏林噪声"
+popup/item_1/id = 1
+popup/item_2/text = "蜂窝/细胞 噪声(Worley/Voronoi)"
+popup/item_2/id = 2
+popup/item_3/text = "平滑噪声(柏林)"
+popup/item_3/id = 3
+popup/item_4/text = "类似点阵+平滑 有所差别"
+popup/item_4/id = 4
+popup/item_5/text = "随机点阵+平滑插值"
+popup/item_5/id = 5
+
+[node name="HBoxContainer19" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer19"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "噪声频率"
+vertical_alignment = 1
+
+[node name="Frequency" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer19"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "所有噪声类型的频率。低频产生平滑的噪声，而高频产生更粗糙、颗粒状更明显的噪声。"
+max_value = 1.0
+step = 0.001
+value = 0.01
+
+[node name="HBoxContainer20" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer20"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "X轴偏移"
+vertical_alignment = 1
+
+[node name="OffsetX" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer20"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = -100.0
+prefix = "X:"
+
+[node name="HBoxContainer21" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer21"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Y轴偏移"
+vertical_alignment = 1
+
+[node name="OffsetY" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer21"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = -100.0
+prefix = "Y:"
+
+[node name="HBoxContainer22" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer22"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Z轴偏移"
+vertical_alignment = 1
+
+[node name="OffsetZ" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer22"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+min_value = -100.0
+prefix = "Z:"
+
+[node name="HBoxContainer23" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer23"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "噪声种子"
+vertical_alignment = 1
+
+[node name="Seed" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer23"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "随机种子"
+max_value = 1000.0
+
+[node name="Fractal" type="HSeparator" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "分形参数"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "合成分形的方法"
+vertical_alignment = 1
+
+[node name="FractalType" type="OptionButton" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer12"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "将八度音阶组合成分形的方法。"
+item_count = 4
+selected = 1
+popup/item_0/text = "无分形"
+popup/item_0/id = 0
+popup/item_1/text = "使用布朗运动分形"
+popup/item_1/id = 1
+popup/item_2/text = "有“脊状”效果的分形"
+popup/item_2/id = 2
+popup/item_3/text = "有乒乓效果的分形"
+popup/item_3/id = 3
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "采样层数"
+vertical_alignment = 1
+
+[node name="FractalOctaves" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer13"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "为获得分形噪声类型的最终值而采样的噪声层数"
+value = 5.0
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "后续音阶倍频"
+vertical_alignment = 1
+
+[node name="FractalLacunarity" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer14"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "后续八度音阶之间的倍频器。"
+step = 0.01
+value = 2.0
+
+[node name="HBoxContainer15" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "后续层的强度"
+vertical_alignment = 1
+
+[node name="FractalGain" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer15"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "确定分形噪声中噪声的每个后续层的强度。
+较低的值更强调较低频率的基础层，而较高的值则更强调较高频率的层。"
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="HBoxContainer16" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "分形乒乓强度"
+vertical_alignment = 1
+
+[node name="FractalPingPongStrength" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer16"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "设置分形乒乓类型的强度。"
+step = 0.01
+value = 2.0
+
+[node name="HBoxContainer17" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "权重比"
+vertical_alignment = 1
+
+[node name="FractalWeightedStrength" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer17"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "较高的权重意味着如果较低的八度具有较大的影响，则较高的八度具有较小的影响"
+max_value = 1.0
+step = 0.01
+
+[node name="DomainWarp" type="HSeparator" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "域/扭曲 参数"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "启用空间扭曲"
+vertical_alignment = 1
+
+[node name="DomainWarpEnabled" type="CheckButton" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "用于扭曲空间"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "设置扭曲算法"
+vertical_alignment = 1
+
+[node name="DomainWarpType" type="OptionButton" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer5"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "设置扭曲算法"
+item_count = 3
+selected = 0
+popup/item_0/text = "单纯形噪声算法"
+popup/item_0/id = 0
+popup/item_1/text = "简化版的单纯形噪声"
+popup/item_1/id = 1
+popup/item_2/text = "噪声栅格(锯齿，低耗)"
+popup/item_2/id = 2
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "噪音频率"
+vertical_alignment = 1
+
+[node name="DomainWarpFrequency" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "扭曲空间的噪音频率。低频产生平滑的噪声，而高频产生更粗糙、颗粒状更明显的噪声"
+max_value = 1.0
+step = 0.01
+value = 0.05
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer7"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "最大扭曲距离"
+vertical_alignment = 1
+
+[node name="DomainWarpAmplitude" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer7"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "设置距原点的最大扭曲距离"
+value = 30.0
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "扭曲空间的合成方法"
+vertical_alignment = 1
+
+[node name="DomainWarpFractalType" type="OptionButton" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer8"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "将八度音阶组合成用于扭曲空间的分形的方法"
+item_count = 3
+selected = 1
+popup/item_0/text = "无扭曲空间噪声"
+popup/item_0/id = 0
+popup/item_1/text = "产生更“液化”的失真"
+popup/item_1/id = 1
+popup/item_2/text = "产生更混乱的失真"
+popup/item_2/id = 2
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "后续层的强度"
+vertical_alignment = 1
+
+[node name="DomainWarpFractalGain" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer9"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "确定用于扭曲空间的噪声的每个后续层的强度。
+较低的值更强调较低频率的基础层，而较高的值则更强调较高频率的层。"
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "音阶空隙"
+vertical_alignment = 1
+
+[node name="DomainWarpFractalLacunarity" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer10"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "扭曲空间的分形噪声的八度音阶空隙。增加此值，会导致更高的八度音阶，从而产生细节更精细、外观更粗糙的噪声"
+step = 0.01
+value = 6.0
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "采样层数"
+vertical_alignment = 1
+
+[node name="DomainWarpFractalOctaves" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer11"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "为获得扭曲空间的分形噪声的最终值而采样的噪声层数。"
+value = 5.0
+
+[node name="Cellular" type="HSeparator" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+text = "细胞/蜂窝 参数"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "近点确定方式"
+vertical_alignment = 1
+
+[node name="CellularDistanceFunction" type="OptionButton" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "确定如何计算到最近/第二最近点的距离"
+item_count = 4
+selected = 0
+popup/item_0/text = "欧几里得距离"
+popup/item_0/id = 0
+popup/item_1/text = "欧几里得距离的平方"
+popup/item_1/id = 1
+popup/item_2/text = "曼哈顿距离"
+popup/item_2/id = 2
+popup/item_3/text = "混合(产生弯曲边界)"
+popup/item_3/id = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "最大距离限制"
+vertical_alignment = 1
+
+[node name="CellularJitter" type="SpinBox" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+tooltip_text = "一个点可以离开其栅格位置的最大距离。对于偶数栅格，设置为 0。"
+step = 0.01
+value = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="HSplitContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "蜂窝噪声计算的返回值"
+vertical_alignment = 1
+
+[node name="CellularReturnType" type="OptionButton" parent="HSplitContainer/ScrollContainer/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+item_count = 7
+selected = 1
+popup/item_0/text = "所有点返回相同的值"
+popup/item_0/id = 0
+popup/item_1/text = "由最近点的距离确定的值"
+popup/item_1/id = 1
+popup/item_2/text = "返回到第二最近点的距离"
+popup/item_2/id = 2
+popup/item_3/text = "最近点与次近点的距离相加"
+popup/item_3/id = 3
+popup/item_4/text = "最近点与次近点的距离相减"
+popup/item_4/id = 4
+popup/item_5/text = "最近点与次近点的距离相乘"
+popup/item_5/id = 5
+popup/item_6/text = "最近点与次近点的距离相除"
+popup/item_6/id = 6
+
+[connection signal="pressed" from="HSplitContainer/FlowContainer/SaveImage" to="." method="_on_save_image_pressed"]
+[connection signal="pressed" from="HSplitContainer/FlowContainer/SaveNoise" to="." method="_on_save_noise_pressed"]
